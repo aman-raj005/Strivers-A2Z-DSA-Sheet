@@ -1,4 +1,4 @@
-/*
+/*                    https://leetcode.com/problems/two-sum/description/
 QUESITON:-
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -26,6 +26,33 @@ Approach:
     If the complement does not exist, add the current element and its index to the map.
 -> If no solution is found, return an empty vector or a message indicating no solution exists.
 */
+// my code 
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int>stored;
+        vector<int>ans{-1,-1};
+        for(int i=0;i<nums.size();i++)
+         {
+           stored[nums[i]]=i;
+         }
+         for(int i=0;i<nums.size();i++)
+         {
+             int numberneeded=target-nums[i];
+             if(stored.find(numberneeded )!=stored.end() && stored[numberneeded]!=i )
+              {
+                ans[1]=i;
+                ans[0]=stored[numberneeded];
+              }
+         }
+         return ans;
+    }
+};
+
+
+
+
 
 // CODE:-
 vector<int> twoSum(vector<int> &nums, int target)

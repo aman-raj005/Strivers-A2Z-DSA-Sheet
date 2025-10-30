@@ -1,4 +1,4 @@
-/*
+/*                                       https://leetcode.com/problems/move-zeroes/description/
 QUESTION:-
 Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
@@ -21,6 +21,50 @@ APPROACH:-
 
 // CODE:-
 // function to find the next non-zero element
+
+
+// my code 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n = nums.size();
+        int j = 0; // pointer for placing non-zero elements
+
+        // Step 1: Move all non-zero elements to the front
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != 0) {
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+
+        // Step 2: Fill remaining positions with zeros
+        while (j < n) {
+            nums[j] = 0;
+            j++;
+        }
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int next_nonzero(vector<int> &a, int &j)
 {
     while (j < a.size())

@@ -1,4 +1,4 @@
-/*
+/*                          https://leetcode.com/problems/single-number/description/
 QUESTION:-
 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 You must implement a solution with a linear runtime complexity and use only constant extra space.
@@ -22,6 +22,32 @@ APPROACH:-
 */
 
 // CODE:-
+
+// my code 
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        //using unordered map
+        int ans=1;
+        unordered_map<int,int>arr_map;
+        for(int i=0;i<nums.size();i++){
+            int temp=nums[i];
+            arr_map[temp]++;
+        }
+        //iterate
+        for(auto it:arr_map){
+            if(it.second==1){
+                ans= it.first;
+                return ans;
+            }
+        }
+        return ans;
+    }
+};
+
+// striver
+
 int singleNumber(vector<int> &nums)
 {
     int xr = 0;

@@ -1,4 +1,4 @@
-/*
+/*                                 https://leetcode.com/problems/rotate-array/description/
 QUESTION:-
 
 Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
@@ -31,11 +31,34 @@ To rotate the array k places to left follow below steps
 -> Reverse first k elements
 -> Reverse last n-k elements
 -> Reverse the entire array
-*/
-
-// CODE:-
 
 // RIGHT ROATATE:-
+arr = [1, 2, 3, 4, 5, 6, 7]
+n = 7
+k = 2
+[6, 7, 1, 2, 3, 4, 5]
+*/
+// CODE:-
+// my code 
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+      k=k%nums.size();
+      reverse(nums.begin(),nums.end());
+      reverse(nums.begin(),nums.begin()+k) ;
+      reverse(nums.begin()+k,nums.end());
+    }
+};
+
+
+
+
+/* example   left shift
+arr = [1, 2, 3, 4, 5, 6, 7]
+n = 7
+k = 2
+[3, 4, 5, 6, 7, 1, 2]
+*/
 void rightRotate(int arr[], int n, int k)
 {
     k = k % n; // to keep k within the range

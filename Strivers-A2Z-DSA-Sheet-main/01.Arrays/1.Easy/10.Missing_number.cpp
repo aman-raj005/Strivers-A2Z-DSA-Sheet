@@ -1,4 +1,4 @@
-/*
+/*                            https://leetcode.com/problems/missing-number/description/
 QUESTION:-
 Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
@@ -21,6 +21,8 @@ APPROACH:-
 -> Return the optimum sum - actual sum
 */
 
+
+
 // CODE:-
 int missingNumber(vector<int> &nums)
 {
@@ -36,3 +38,17 @@ int missingNumber(vector<int> &nums)
 
 // TIME COMPLEXITY = O(N)
 // SPACE COMPLEXITY = O(0)
+
+// another method 
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+       sort(nums.begin(),nums.end());
+       for(int i=0;i<nums.size();i++)
+       {
+          if(nums[i]!=i){return i;}
+       } 
+       return nums.size();
+    }
+};

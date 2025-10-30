@@ -1,3 +1,4 @@
+
 /*
 QUESTION:-
 Given an array "ARR' containing 'N' elements, rotate this array Left by once means to shift all elements by one place to the left and move the first element to the last position in the array.
@@ -16,6 +17,8 @@ APPROACH:-
 -> Before traversing store the arr[0] in temp and then traverse the array and make arr[i] = arr[i+1]
 -> Make arr[n-1] = arr[0], where n is the size of the array
 */
+
+
 
 // CODE:-
 vector<int> rotateArray(vector<int> &arr, int n)

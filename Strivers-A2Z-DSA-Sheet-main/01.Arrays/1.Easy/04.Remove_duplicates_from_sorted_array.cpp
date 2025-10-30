@@ -1,3 +1,6 @@
+ leetcode - https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+
+
 /*
 QUESTION:-
 
@@ -27,6 +30,61 @@ APPROACH:-
    so increment the k and swap arr[k] with arr[j]
 -> Return k+1, +1 is because of 0 based indexing
 */
+
+// my first code 
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums)
+     {
+       
+        vector<int>ans;
+        int i=0;
+        int j=0;
+        while(j<nums.size())
+        {
+          if(nums[i]==nums[j])
+            {
+             j++;
+            }
+          else 
+            {
+              i++;
+              nums[i]=nums[j];
+              j++;
+            }
+          
+        }  
+        return i+1;
+    }
+};
+
+// my code 2nd
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums)
+     {
+        stack<int>s;
+        vector<int>ans;
+        for(int i=0;i<nums.size();i++)
+        {
+          if(s.empty())
+           {
+             s.push(nums[i]);
+             ans.push_back(nums[i]);
+           }
+          if(s.top()!=nums[i])
+          {
+           ans.push_back(nums[i]);
+           s.push(nums[i]);
+          }
+        }
+        nums=ans;
+        return s.size();
+    }
+};
+
 
 // CODE:-
 int removeDuplicates(vector<int> &nums)

@@ -1,4 +1,4 @@
-/*
+/*                           https://leetcode.com/problems/max-consecutive-ones/
 QUESTION:-
 Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
@@ -19,6 +19,39 @@ APPROACH:-
 -> Traverse the entire array and within it run a loop while element's are equal to 1 and store the count
 -> Update the ans as max(ans,cnt)
 */
+//my code 
+
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) 
+    {
+        int currentCount = 0;              // Counts current streak of 1s
+        int maxConsecutive = 0;            // Stores maximum consecutive 1s found
+
+        for (int i = 0; i < nums.size(); i++) 
+        {
+            if (nums[i] == 1) 
+            {
+                // If current element is 1, increase current streak
+                currentCount++;
+                // Update the maximum streak if needed
+                maxConsecutive = max(maxConsecutive, currentCount);
+            } 
+            else 
+            {
+                // If a 0 is found, reset the current streak count
+                currentCount = 0;
+            }
+        }
+
+        return maxConsecutive;
+    }
+};
+
+
+
+
+
 
 // CODE:-
 int findMaxConsecutiveOnes(vector<int> &nums)

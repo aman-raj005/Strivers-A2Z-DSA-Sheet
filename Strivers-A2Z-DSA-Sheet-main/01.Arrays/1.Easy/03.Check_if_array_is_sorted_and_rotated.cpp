@@ -1,3 +1,5 @@
+
+leetcode -https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/
 /*
 QUESTION:-
 Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
@@ -28,6 +30,61 @@ If all a <= b but only one a > b, and the first element is greater than equal to
 we can rotate and make b the first element so answer is true.
 Other case, return false.
 */
+
+// brute force 
+
+class Solution {
+public:
+    // 🔹 Helper function to check if the given array is sorted in non-decreasing order
+    bool isSorted(vector<int>& arr) {
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr[i] < arr[i - 1])  // if any element is smaller than the previous one
+                return false;          // array is not sorted
+        }
+        return true; // if loop completes, array is sorted
+    }
+
+    // 🔹 Main function to check if the array is sorted and rotated
+    bool check(vector<int>& nums) {
+        int n = nums.size();
+
+        // Try all possible rotations of the array
+        for (int r = 0; r < n; r++) {
+
+            // Create a copy of the original array before each rotation
+            vector<int> rotated(nums.begin(), nums.end());
+
+            // Rotate the array by 'r' positions
+            rotate(rotated.begin(), rotated.begin() + r, rotated.end());
+
+            // Check if this rotated version is sorted
+            if (isSorted(rotated))
+                return true; // found a rotation that makes it sorted
+        }
+
+        // If no rotation leads to a sorted array
+        return false;
+    }
+};
+
+
+// TIME COMPLEXITY = O(N^2)
+// SPACE COMPLEXITY = O(N)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CODE:-
 bool check(vector<int> &nums)

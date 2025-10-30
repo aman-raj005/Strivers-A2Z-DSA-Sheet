@@ -1,4 +1,4 @@
-/*
+/*                                   
 QUESTION:-
 Union of two arrays can be defined as the common and distinct elements in the two arrays.
 Given two sorted arrays of size n and m respectively, find their union.
@@ -37,6 +37,63 @@ APPROACH:-
         Here insert arr2[j]
 -> Now check if elements of any array is left to traverse then traverse that array
 */
+
+
+
+// my code 
+
+
+class Solution {
+public:
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        int aIndex = 0, bIndex = 0;
+        vector<int> ans;
+
+        // Merge both arrays (like merge step in merge sort)
+        while (aIndex < a.size() && bIndex < b.size()) {
+            if (a[aIndex] <= b[bIndex]) {
+                ans.push_back(a[aIndex]);
+                aIndex++;
+            } else {
+                ans.push_back(b[bIndex]);
+                bIndex++;
+            }
+        }
+
+        // Add remaining elements from array a
+        while (aIndex < a.size()) {
+            ans.push_back(a[aIndex]);
+            aIndex++;
+        }
+
+        // Add remaining elements from array b
+        while (bIndex < b.size()) {
+            ans.push_back(b[bIndex]);
+            bIndex++;
+        }
+
+        // Remove duplicates and store final answer
+        vector<int> final;
+        for (int i = 0; i < ans.size(); i++) {
+            if (final.empty() || final.back() != ans[i])
+                final.push_back(ans[i]);
+        }
+
+        return final;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CODE:-
 vector<int> findUnion(int arr1[], int arr2[], int n, int m)
